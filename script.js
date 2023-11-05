@@ -37,7 +37,9 @@ const emails = [
     },
    
 ]
-clickedEmail = {}
+const clickedEmail = {}
+const visitedEmails = []
+let selectedEmail 
 const left = document.getElementById("left")
 const right = document.getElementById("right")
 const fromDiv = document.getElementById("from")
@@ -48,6 +50,7 @@ window.onload = function (){
         const emailBox = document.createElement('div')
         const emailFrom = document.createElement('div')
         const emailBody = document.createElement("div")
+        
         emailBox.classList.add("email-box")
         emailFrom.classList.add("email-from")
         emailBody.classList.add("email-body")
@@ -56,10 +59,13 @@ window.onload = function (){
         emailBox.appendChild(emailFrom)
         emailBox.appendChild(emailBody)
         left.appendChild(emailBox)
-        emailBox.addEventListener("click",()=>rightfn(k))
+        emailBox.addEventListener("click",()=>rightfn(k,emailBox))
     })
 }
-function rightfn(k){
+function rightfn(k,e){
+    visitedEmails.push(k)
     fromDiv.innerText = k.from
     emailBodyText.innerText =k.msg
+    e.classList.add("darkgray")
+    
 }

@@ -28,8 +28,7 @@
 
   width: 100%;
 }
-.left,
-.right {
+.left {
   flex: 1;
   min-height: 90vh;
   display: flex;
@@ -38,6 +37,8 @@
 
 }
 .right {
+    flex: 1;
+    min-height: 90vh;
   background-color: #181818;
 }
 .header{
@@ -76,4 +77,12 @@
 }
 .email-body{
     margin: 3px
+}
+.from{
+    font-size: 30px;
+    margin: 10px;
+}
+.emailbody{
+    font-size: 40px;
+    margin: 20px;
 }

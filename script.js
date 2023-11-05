@@ -37,8 +37,11 @@ const emails = [
     },
    
 ]
+clickedEmail = {}
 const left = document.getElementById("left")
 const right = document.getElementById("right")
+const fromDiv = document.getElementById("from")
+const emailBodyText = document.getElementById("emailbody")
 window.onload = function (){
 
     emails.map(k=>{
@@ -53,7 +56,10 @@ window.onload = function (){
         emailBox.appendChild(emailFrom)
         emailBox.appendChild(emailBody)
         left.appendChild(emailBox)
+        emailBox.addEventListener("click",()=>rightfn(k))
     })
-  
-
+}
+function rightfn(k){
+    fromDiv.innerText = k.from
+    emailBodyText.innerText =k.msg
 }

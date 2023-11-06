@@ -131,6 +131,7 @@ function inbox() {
         const emailFav = document.createElement("i")
         const deleteEmail = document.createElement("i")
         const msg = (k.msg.length>30)?k.msg.slice(0,30)+"...":k.msg
+        const fromShort = k.from.split("@")[0]
         deleteEmail.id = "delete-email"
         emailFav.id = "email-fav"
         deleteEmail.classList.add("bi")
@@ -140,7 +141,7 @@ function inbox() {
           emailBox.classList.add("email-box");
           emailFrom.classList.add("email-from");
           emailBody.classList.add("email-body");
-          emailFrom.innerText = k.from;
+          emailFrom.innerText = fromShort;
           emailBody.innerText = msg;
           emailBox.appendChild(emailFav)
           emailBox.appendChild(emailFrom);

@@ -113,6 +113,10 @@ function checkNavBtns() {
       favourites();
       break;
     }
+    case "Deleted":{
+        deleted();
+        break;
+    }
     default: {
       break;
     }
@@ -120,32 +124,35 @@ function checkNavBtns() {
 }
 function inbox() {
   emails.map((k) => {
-    const emailBox = document.createElement("div");
-    const emailFrom = document.createElement("div");
-    const emailBody = document.createElement("div");
-    const emailFav = document.createElement("i")
-    const deleteEmail = document.createElement("i")
-    const msg = (k.msg.length>40)?k.msg.slice(0,40)+"...":k.msg
-    deleteEmail.id = "delete-email"
-    emailFav.id = "email-fav"
-    deleteEmail.classList.add("bi")
-    deleteEmail.classList.add("bi-trash-fill")
-    emailFav.classList.add("bi")
-    emailFav.classList.add("bi-star-fill")
-      emailBox.classList.add("email-box");
-      emailFrom.classList.add("email-from");
-      emailBody.classList.add("email-body");
-      emailFrom.innerText = k.from;
-      emailBody.innerText = msg;
-      emailBox.appendChild(emailFav)
-      emailBox.appendChild(emailFrom);
-      emailBox.appendChild(emailBody);
-      emailBox.appendChild(deleteEmail)
-      left.appendChild(emailBox);
-      emailBox.addEventListener("click", () => rightfn(k, emailBox));
-      emailFav.addEventListener("click",()=>addToFav(k,emailFav))
-      deleteEmail.addEventListener("click",()=>deletedEmail(k,emailBox))
-      
+    if(!k.deleted){
+        const emailBox = document.createElement("div");
+        const emailFrom = document.createElement("div");
+        const emailBody = document.createElement("div");
+        const emailFav = document.createElement("i")
+        const deleteEmail = document.createElement("i")
+        const msg = (k.msg.length>40)?k.msg.slice(0,40)+"...":k.msg
+        deleteEmail.id = "delete-email"
+        emailFav.id = "email-fav"
+        deleteEmail.classList.add("bi")
+        deleteEmail.classList.add("bi-trash-fill")
+        emailFav.classList.add("bi")
+        emailFav.classList.add("bi-star-fill")
+          emailBox.classList.add("email-box");
+          emailFrom.classList.add("email-from");
+          emailBody.classList.add("email-body");
+          emailFrom.innerText = k.from;
+          emailBody.innerText = msg;
+          emailBox.appendChild(emailFav)
+          emailBox.appendChild(emailFrom);
+          emailBox.appendChild(emailBody);
+          emailBox.appendChild(deleteEmail)
+          left.appendChild(emailBox);
+          emailBox.addEventListener("click", () => rightfn(k, emailBox));
+          emailFav.addEventListener("click",()=>addToFav(k,emailFav))
+          deleteEmail.addEventListener("click",()=>deletedEmail(k,emailBox))
+            
+    }
+
   });
 }
 function deletedEmail(k,e){
@@ -154,7 +161,6 @@ function deletedEmail(k,e){
     deleteEmails = emails.filter(k=>{
         return k.deleted
     })
-    console.log(deleteEmails)
 }
 
 function addToFav(k,e){
@@ -194,18 +200,35 @@ function rightfn(k, e) {
 function favourites() {
   if (navBtns === "Favourites") {
     favouriteEmails.map((k) => {
-      const emailBox = document.createElement("div");
-      const emailFrom = document.createElement("div");
-      const emailBody = document.createElement("div");
-      emailBox.classList.add("email-box");
-      emailFrom.classList.add("email-from");
-      emailBody.classList.add("email-body");
-      emailFrom.innerText = k.from;
-      emailBody.innerText = k.msg;
-      emailBox.appendChild(emailFrom)
-      emailBox.appendChild(emailBody)
-      left.appendChild(emailBox);
-      emailBox.addEventListener("click", () => rightfn(k, emailBox));
-    });
+        const emailBox = document.createElement("div");
+        const emailFrom = document.createElement("div");
+        const emailBody = document.createElement("div");
+        emailBox.classList.add("email-box");
+        emailFrom.classList.add("email-from");
+        emailBody.classList.add("email-body");
+        emailFrom.innerText = k.from;
+        emailBody.innerText = k.msg;
+        emailBox.appendChild(emailFrom)
+        emailBox.appendChild(emailBody)
+        left.appendChild(emailBox);
+        emailBox.addEventListener("click", () => rightfn(k, emailBox));
+      });
   }
+}
+
+function deleted(){
+    deleteEmails.map((k) => {
+        const emailBox = document.createElement("div");
+        const emailFrom = document.createElement("div");
+        const emailBody = document.createElement("div");
+        emailBox.classList.add("email-box");
+        emailFrom.classList.add("email-from");
+        emailBody.classList.add("email-body");
+        emailFrom.innerText = k.from;
+        emailBody.innerText = k.msg;
+        emailBox.appendChild(emailFrom)
+        emailBox.appendChild(emailBody)
+        left.appendChild(emailBox);
+        emailBox.addEventListener("click", () => rightfn(k, emailBox));
+      });
 }

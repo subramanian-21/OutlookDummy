@@ -71,13 +71,17 @@
    width: 100%;
     border: 1px solid #2f2f2f;
     height: 80px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
 }
 .email-from{
     margin: 10px;
     color: gray;
 }
 .email-body{
-    margin: 3px
+    margin: 3px;
+ 
 }
 .from{
     font-size: 30px;
@@ -89,4 +93,10 @@
 }
 .darkgray{
     background-color: #2f2f2f;
+}
+#email-fav{
+  font-size: 25px;
+}
+.red{
+  color: red;
 }

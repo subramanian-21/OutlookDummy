@@ -129,15 +129,19 @@ function addToFav(k,e){
 
     if(e.classList.contains("red")){
         e.classList.remove("red")
+       
     }else{
         e.classList.add("red")
     }
+
     if(clickedIds.indexOf(k.id)>=0){
-        console.log("old")
+        clickedIds.pop(k.id)
+        console.log(clickedIds)
         
     }else{
         clickedIds.push(k.id)
         console.log(clickedIds.indexOf(k.id))
+        console.log(clickedIds)
     }
     
    

@@ -198,7 +198,7 @@ function rightfn(k, e) {
 }
 
 function favourites() {
-  if (navBtns === "Favourites") {
+    (deleteEmails.length>0) ?
     favouriteEmails.map((k) => {
         const emailBox = document.createElement("div");
         const emailFrom = document.createElement("div");
@@ -212,11 +212,12 @@ function favourites() {
         emailBox.appendChild(emailBody)
         left.appendChild(emailBox);
         emailBox.addEventListener("click", () => rightfn(k, emailBox));
-      });
-  }
+      })
+  :left.innerText = "Nothing Found"
 }
 
 function deleted(){
+    (deleteEmails.length>0) ?
     deleteEmails.map((k) => {
         const emailBox = document.createElement("div");
         const emailFrom = document.createElement("div");
@@ -230,5 +231,6 @@ function deleted(){
         emailBox.appendChild(emailBody)
         left.appendChild(emailBox);
         emailBox.addEventListener("click", () => rightfn(k, emailBox));
-      });
+      })
+      :left.innerText = "Nothing Found"
 }

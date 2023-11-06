@@ -15,7 +15,6 @@
     display: flex;
 }
 .nav {
-  background-color: purple;
   width: 300px;
   min-height: 90vh;
   display: flex;
@@ -54,7 +53,6 @@
 .nav-box{
     width: 240px;
     height: 60px;
-    border: 1px solid rgb(148, 75, 148);
     margin: 2px;
     border-radius: 5px;
     font-size: 25px;
@@ -64,10 +62,10 @@
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .nav-box:hover{
-    background-color: rgb(148, 75, 148);
+    background-color: rgb(14, 54, 234);
 }
 .clicked-pink{
-  background-color: rgb(148, 75, 148);
+  background-color: rgb(14, 54, 234);
 }
 .email-box{
    width: 100%;

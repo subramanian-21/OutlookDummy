@@ -38,13 +38,17 @@ const emails = [
 ];
 const clickedEmail = {};
 const visitedEmails = [];
-let navBtns = "Inbox";
+let navBtns = "";
 let selectedEmail;
 let val = null
 const left = document.getElementById("left");
 const right = document.getElementById("right");
 const fromDiv = document.getElementById("from");
 const emailBodyText = document.getElementById("emailbody");
+
+
+clickedNav();
+
 
 function clickedNav() {
   const navs = document.querySelectorAll(".nav-box");
@@ -53,7 +57,6 @@ function clickedNav() {
   });
 }
 function clickedNavFn() {
-  
   if(val!=null){
     val.classList.remove("clicked-pink")
   }
@@ -64,7 +67,6 @@ function clickedNavFn() {
   checkNavBtns();
   val.classList.add("clicked-pink")
 }
-clickedNav();
 function checkNavBtns() {
   switch (navBtns) {
     case "Inbox": {
@@ -94,7 +96,6 @@ function inbox() {
       emailBox.appendChild(emailBody);
       left.appendChild(emailBox);
       emailBox.addEventListener("click", () => rightfn(k, emailBox));
-    
   });
 }
 function rightfn(k, e) {
@@ -110,14 +111,13 @@ function favourites() {
       const emailBox = document.createElement("div");
       const emailFrom = document.createElement("div");
       const emailBody = document.createElement("div");
-
       emailBox.classList.add("email-box");
       emailFrom.classList.add("email-from");
       emailBody.classList.add("email-body");
       emailFrom.innerText = k.from;
       emailBody.innerText = k.msg;
-      // emailBox.appendChild(emailFrom)
-      // emailBox.appendChild(emailBody)
+      emailBox.appendChild(emailFrom)
+      emailBox.appendChild(emailBody)
       left.appendChild(emailBox);
       emailBox.addEventListener("click", () => rightfn(k, emailBox));
     });

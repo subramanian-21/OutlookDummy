@@ -66,6 +66,9 @@
 .nav-box:hover{
     background-color: rgb(148, 75, 148);
 }
+.clicked-pink{
+  background-color: rgb(148, 75, 148);
+}
 .email-box{
    width: 100%;
     border: 1px solid #2f2f2f;

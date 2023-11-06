@@ -4,21 +4,24 @@ let emails = [
     from: "beetlejuice@gmail.com",
     msg: "Hi Subramanian,Here are some of the latest opportunities matching your preferences. Apply now!",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
   },
   {
     id:2,
     from: "richardtheretard@gmail.com",
     msg: "College students can taste placement success with this course!",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
   },
   {
     id:3,
     from: "dumbass@email.com",
     msg: "“software engineer”: ADSMN - HTML CSS JS - Frontend Developer and more",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
 
   },
   {
@@ -26,7 +29,8 @@ let emails = [
     from: "noone@gmail.com",
     msg: "Invitation to participate in the first pilot of Central Bank Digital Currency - Retail (Digital Rupee - e₹) / SBI CBDC",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
 
   },
   {
@@ -34,7 +38,8 @@ let emails = [
     from: "bb12372@gmail.com",
     msg: "Reminder: Verify your email to continue to Proton",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
 
   },
   {
@@ -42,7 +47,8 @@ let emails = [
     from: "wakali@gmail.com",
     msg: "Get Tech Placed | Join the 20X Programming Bundle",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
 
   },
   {
@@ -50,7 +56,8 @@ let emails = [
     from: "captainalex@email.com",
     msg: "Subramanian, new internships in DataSkience OPC, Hooman Digital LLP & more",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
 
   },
   {
@@ -58,7 +65,8 @@ let emails = [
     from: "jamaalbee@rediff.com",
     msg: "Subramanian, new internships in DataSkience OPC, Hooman Digital LLP & more",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
 
   },
   {
@@ -66,7 +74,8 @@ let emails = [
     from: "niggatron@gmail.com",
     msg: "Wanna know how 'typography' affects the human mind? 🤯 Register to know more!",
     fav:false,
-    deleted:false
+    deleted:false,
+    visited:false
 
   },
 ];
@@ -153,6 +162,11 @@ function inbox() {
           }else{
             emailFav.classList.remove("red")
           }
+          if(k.visited){
+            emailBox.classList.add("darkgray")
+          }else{
+            emailBox.classList.remove("darkgray")
+          }
           emailBox.addEventListener("click", () => rightfn(k, emailBox));
           emailFav.addEventListener("click",()=>addToFav(k,emailFav))
           deleteEmail.addEventListener("click",()=>deletedEmail(k,emailBox))
@@ -200,10 +214,11 @@ function addToFav(k,e){
    
 }
 function rightfn(k, e) {
-  visitedEmails.push(k);
+  k.visited = true
   fromDiv.innerText = k.from;
   emailBodyText.innerText = k.msg;
   e.classList.add("darkgray");
+
 }
 
 function favourites() {

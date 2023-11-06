@@ -56,6 +56,7 @@ const emails = [
 ];
 const clickedEmail = {};
 const visitedEmails = [];
+let favouriteEmails =[]
 let navBtns = "";
 let selectedEmail;
 let val = null
@@ -143,6 +144,12 @@ function addToFav(k,e){
         console.log(clickedIds.indexOf(k.id))
         console.log(clickedIds)
     }
+    favouriteEmails = emails.filter(mk=>{
+     return clickedIds.includes(mk.id)
+        
+    })
+    console.log(favouriteEmails)
+
     
    
 }
@@ -155,7 +162,7 @@ function rightfn(k, e) {
 
 function favourites() {
   if (navBtns === "Favourites") {
-    emails.map((k) => {
+    favouriteEmails.map((k) => {
       const emailBox = document.createElement("div");
       const emailFrom = document.createElement("div");
       const emailBody = document.createElement("div");

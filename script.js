@@ -97,8 +97,8 @@ function clickedNavFn() {
     val.classList.remove("clicked-pink")
   }
   val = this;
-  navBtns = val.innerText;
-  
+  navBtns = val.id;
+  console.log(val.id)
   left.innerHTML = "";
   checkNavBtns();
   val.classList.add("clicked-pink")
@@ -130,7 +130,7 @@ function inbox() {
         const emailBody = document.createElement("div");
         const emailFav = document.createElement("i")
         const deleteEmail = document.createElement("i")
-        const msg = (k.msg.length>40)?k.msg.slice(0,40)+"...":k.msg
+        const msg = (k.msg.length>30)?k.msg.slice(0,30)+"...":k.msg
         deleteEmail.id = "delete-email"
         emailFav.id = "email-fav"
         deleteEmail.classList.add("bi")
@@ -214,8 +214,9 @@ function favourites() {
         emailBox.classList.add("email-box");
         emailFrom.classList.add("email-from");
         emailBody.classList.add("email-body");
+        const msg = (k.msg.length>40)?k.msg.slice(0,40)+"...":k.msg
         emailFrom.innerText = k.from;
-        emailBody.innerText = k.msg;
+        emailBody.innerText = msg;
         emailBox.appendChild(emailFrom)
         emailBox.appendChild(emailBody)
         left.appendChild(emailBox);

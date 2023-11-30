@@ -167,7 +167,7 @@ function inbox() {
           }else{
             emailBox.classList.remove("darkgray")
           }
-          emailBox.addEventListener("click", () => rightfn(k, emailBox));
+          emailBox.addEventListener("click", ()=> rightfn(k, emailBox));
           emailFav.addEventListener("click",()=>addToFav(k,emailFav))
           deleteEmail.addEventListener("click",()=>deletedEmail(k,emailBox))
             
@@ -179,13 +179,14 @@ function deletedEmail(k,e){
     e.style.display = "none"
    console.log(fromDiv.innerHTML)
     k.deleted = true
+    k.fav = false
     deleteEmails = emails.filter(k=>{
         return k.deleted
     })
 }
 
 function addToFav(k,e){
-
+  k.fav =!k.fav
     if(e.classList.contains("red")){
         e.classList.remove("red")
        
@@ -223,7 +224,8 @@ function rightfn(k, e) {
 
 function favourites() {
     (favouriteEmails.length>0) ?
-    favouriteEmails.map((k) => {
+    emails.map((k) => {
+      if(k.fav){
         const emailBox = document.createElement("div");
         const emailFrom = document.createElement("div");
         const emailBody = document.createElement("div");
@@ -237,6 +239,8 @@ function favourites() {
         emailBox.appendChild(emailBody)
         left.appendChild(emailBox);
         emailBox.addEventListener("click", () => rightfn(k, emailBox));
+      }
+       
       })
   :left.innerText = "Nothing Found"
 }
